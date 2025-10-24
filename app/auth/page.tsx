@@ -32,7 +32,7 @@ export default function Page() {
             />
           </div>
           <div className="absolute inset-0 flex items-center justify-center z-10">
-            <h1 className="text-4xl font-bold text-white">Conflu.ai</h1>
+            <Image src="/conflu-white.png" alt="Conflu" width={350} height={350} />
           </div>
         </div>
         <div className="w-full lg:w-1/2 flex items-center justify-center p-8">

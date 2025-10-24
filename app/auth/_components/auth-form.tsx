@@ -12,6 +12,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { RecycleIcon } from 'lucide-react'
 
 export function AuthForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -32,8 +34,8 @@ export function AuthForm() {
 
   return (
     <div className="w-full">
-      <div className="lg:hidden mb-8 text-center">
-        <h1 className="text-2xl font-bold text-foreground">Conflu.ai</h1>
+      <div className="lg:hidden mb-8 flex items-center justify-center">
+        <Image src="/conflu04.png" alt="Conflu" width={350} height={350} />
       </div>
       
       <Card className="mx-auto w-[380px]">
@@ -46,38 +48,32 @@ export function AuthForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleLogin} className="mt-3 space-y-4">
-          <div className="space-y-2">
-            <Input
-              type="email"
-              placeholder="Digite seu email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Input
-              type="password"
-              placeholder="Digite sua senha"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+        <div className="mt-3 flex w-full">
           <Button
-            type="submit"
-            className="w-full bg-linear-to-r from-[#b38a5e] to-[#c3a169] hover:from-[#9a764e] hover:to-[#b38a5e] transition-all duration-200"
+          
+            className="w-full"
+            variant="outline"
             disabled={isLoading}
           >
-            {isLoading ? 'Entrando...' : 'Entrar'}
+            {isLoading ? (
+              <RecycleIcon className="mr-2 h-4 w-4 animate-spin" />
+            ) : (
+              <Image
+                alt="logo google"
+                width={20}
+                height={20}
+                src={'google.svg'}
+                className="mr-2"
+              />
+            )}
+            {isLoading ? 'Entrando...' : 'Sign in with Google'}
           </Button>
-        </form>
+        </div>
       </CardContent>
       <CardFooter>
         <CardDescription className="text-xs">
           Ao clicar em continuar, você reconhece que leu e concorda com os
-          termos da Conflu.ai{' '}
+          termos da Conflu{' '}
           <Link href={'#'} className="underline">
             Termos de serviço
           </Link>{' '}
